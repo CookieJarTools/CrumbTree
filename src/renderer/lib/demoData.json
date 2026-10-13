@@ -1,0 +1,253 @@
+{
+  "repo": {
+    "path": "C:/Projects/demo-repo",
+    "name": "demo-repo",
+    "head": {
+      "branch": "main",
+      "hash": "6d27cf1",
+      "detached": false,
+      "upstream": "origin/main",
+      "ahead": 2,
+      "behind": 0
+    }
+  },
+  "commits": [
+    {
+      "hash": "2daf2fce2fcdf738ccf6cb94b4f0a7a7d9267c9b",
+      "parents": [
+        "6d27cf1f6892e726bc41148efba8ccb321ffa841"
+      ],
+      "authorName": "Ada Lovelace",
+      "authorEmail": "demo@crumbtree.dev",
+      "timestamp": 1783971385,
+      "subject": "Begin reporting module",
+      "refs": [
+        "feature/reporting"
+      ]
+    },
+    {
+      "hash": "6d27cf1f6892e726bc41148efba8ccb321ffa841",
+      "parents": [
+        "85aab929384fd95f9c605af290b5574c306d1c11",
+        "a0c4976a6eaa34bbc92436a7071c18007e1c895d"
+      ],
+      "authorName": "Ada Lovelace",
+      "authorEmail": "demo@crumbtree.dev",
+      "timestamp": 1783971385,
+      "subject": "Merge feature/login into main",
+      "refs": [
+        "main",
+        "v1.0.0"
+      ]
+    },
+    {
+      "hash": "85aab929384fd95f9c605af290b5574c306d1c11",
+      "parents": [
+        "0f615d328db151be767493dc530cd6f4df675ea1",
+        "4a8959cd737524070ab06239deb82a7c210970da"
+      ],
+      "authorName": "Ada Lovelace",
+      "authorEmail": "demo@crumbtree.dev",
+      "timestamp": 1783971385,
+      "subject": "Merge hotfix into main",
+      "refs": []
+    },
+    {
+      "hash": "a0c4976a6eaa34bbc92436a7071c18007e1c895d",
+      "parents": [
+        "f734eee7e0086155e67388b19d0f32fcc31a1383"
+      ],
+      "authorName": "Ada Lovelace",
+      "authorEmail": "demo@crumbtree.dev",
+      "timestamp": 1783971384,
+      "subject": "Add credential validation",
+      "refs": [
+        "feature/login"
+      ]
+    },
+    {
+      "hash": "4a8959cd737524070ab06239deb82a7c210970da",
+      "parents": [
+        "0f615d328db151be767493dc530cd6f4df675ea1"
+      ],
+      "authorName": "Ada Lovelace",
+      "authorEmail": "demo@crumbtree.dev",
+      "timestamp": 1783971384,
+      "subject": "Critical hotfix for prod",
+      "refs": [
+        "hotfix"
+      ]
+    },
+    {
+      "hash": "0f615d328db151be767493dc530cd6f4df675ea1",
+      "parents": [
+        "a3cd296442957082ea051cd98cc8ce10278e9556"
+      ],
+      "authorName": "Ada Lovelace",
+      "authorEmail": "demo@crumbtree.dev",
+      "timestamp": 1783971384,
+      "subject": "Add footer on main",
+      "refs": []
+    },
+    {
+      "hash": "f734eee7e0086155e67388b19d0f32fcc31a1383",
+      "parents": [
+        "a3cd296442957082ea051cd98cc8ce10278e9556"
+      ],
+      "authorName": "Ada Lovelace",
+      "authorEmail": "demo@crumbtree.dev",
+      "timestamp": 1783971383,
+      "subject": "Start login feature",
+      "refs": []
+    },
+    {
+      "hash": "a3cd296442957082ea051cd98cc8ce10278e9556",
+      "parents": [
+        "3fc8fb2799931726a1ded0fc4784eca3ec2e4443"
+      ],
+      "authorName": "Ada Lovelace",
+      "authorEmail": "demo@crumbtree.dev",
+      "timestamp": 1783971383,
+      "subject": "Add app.txt with three lines",
+      "refs": []
+    },
+    {
+      "hash": "3fc8fb2799931726a1ded0fc4784eca3ec2e4443",
+      "parents": [],
+      "authorName": "Ada Lovelace",
+      "authorEmail": "demo@crumbtree.dev",
+      "timestamp": 1783971383,
+      "subject": "Initial commit",
+      "refs": []
+    }
+  ],
+  "refs": [
+    {
+      "name": "feature/login",
+      "type": "localBranch",
+      "hash": "a0c4976",
+      "current": false,
+      "gone": true,
+      "upstream": "origin/feature/login"
+    },
+    {
+      "name": "feature/reporting",
+      "type": "localBranch",
+      "hash": "2daf2fc",
+      "current": false
+    },
+    {
+      "name": "hotfix",
+      "type": "localBranch",
+      "hash": "4a8959c",
+      "current": false,
+      "upstream": "origin/hotfix",
+      "gone": false
+    },
+    {
+      "name": "main",
+      "type": "localBranch",
+      "hash": "6d27cf1",
+      "current": true
+    },
+    {
+      "name": "v1.0.0",
+      "type": "tag",
+      "hash": "6d27cf1"
+    }
+  ],
+  "status": {
+    "staged": [],
+    "unstaged": [
+      {
+        "path": "app.txt",
+        "type": "modified",
+        "staged": false
+      },
+      {
+        "path": "notes.txt",
+        "type": "untracked",
+        "staged": false
+      },
+      {
+        "path": "Src/GameContext.cpp",
+        "type": "modified",
+        "staged": false
+      },
+      {
+        "path": "Assets/Shaders/MarchingCubes.slang",
+        "type": "modified",
+        "staged": false
+      },
+      {
+        "path": "Scripts/Build.ps1",
+        "type": "modified",
+        "staged": false
+      },
+      {
+        "path": "README.md",
+        "type": "modified",
+        "staged": false
+      }
+    ],
+    "conflicted": []
+  },
+  "diffs": {
+    "app.txt": "diff --git a/app.txt b/app.txt\nindex 83db48f..9b7a3ae 100644\n--- a/app.txt\n+++ b/app.txt\n@@ -1,3 +1,4 @@\n line1\n-line2\n+line2 edited\n line3\n+new line4\n"
+  },
+  "commitFiles": {
+    "2daf2fce2fcdf738ccf6cb94b4f0a7a7d9267c9b": [
+      {
+        "path": "reports.txt",
+        "type": "added",
+        "staged": true
+      }
+    ],
+    "6d27cf1f6892e726bc41148efba8ccb321ffa841": [],
+    "85aab929384fd95f9c605af290b5574c306d1c11": [],
+    "a0c4976a6eaa34bbc92436a7071c18007e1c895d": [
+      {
+        "path": "login.txt",
+        "type": "modified",
+        "staged": true
+      }
+    ],
+    "4a8959cd737524070ab06239deb82a7c210970da": [
+      {
+        "path": "hotfix.txt",
+        "type": "added",
+        "staged": true
+      }
+    ],
+    "0f615d328db151be767493dc530cd6f4df675ea1": [
+      {
+        "path": "footer.txt",
+        "type": "added",
+        "staged": true
+      }
+    ],
+    "f734eee7e0086155e67388b19d0f32fcc31a1383": [
+      {
+        "path": "login.txt",
+        "type": "added",
+        "staged": true
+      }
+    ],
+    "a3cd296442957082ea051cd98cc8ce10278e9556": [
+      {
+        "path": "app.txt",
+        "type": "added",
+        "staged": true
+      }
+    ],
+    "3fc8fb2799931726a1ded0fc4784eca3ec2e4443": []
+  },
+  "commitDiffs": {
+    "2daf2fce2fcdf738ccf6cb94b4f0a7a7d9267c9b::reports.txt": "diff --git a/reports.txt b/reports.txt\nnew file mode 100644\nindex 0000000..e6f3c29\n--- /dev/null\n+++ b/reports.txt\n@@ -0,0 +1 @@\n+reporting module\n",
+    "a0c4976a6eaa34bbc92436a7071c18007e1c895d::login.txt": "diff --git a/login.txt b/login.txt\nindex 241c9b4..9950d84 100644\n--- a/login.txt\n+++ b/login.txt\n@@ -1 +1,2 @@\n login form html\n+validate credentials\n",
+    "4a8959cd737524070ab06239deb82a7c210970da::hotfix.txt": "diff --git a/hotfix.txt b/hotfix.txt\nnew file mode 100644\nindex 0000000..9eb7b90\n--- /dev/null\n+++ b/hotfix.txt\n@@ -0,0 +1 @@\n+patch\n",
+    "0f615d328db151be767493dc530cd6f4df675ea1::footer.txt": "diff --git a/footer.txt b/footer.txt\nnew file mode 100644\nindex 0000000..afabd6f\n--- /dev/null\n+++ b/footer.txt\n@@ -0,0 +1 @@\n+footer text\n",
+    "f734eee7e0086155e67388b19d0f32fcc31a1383::login.txt": "diff --git a/login.txt b/login.txt\nnew file mode 100644\nindex 0000000..241c9b4\n--- /dev/null\n+++ b/login.txt\n@@ -0,0 +1 @@\n+login form html\n",
+    "a3cd296442957082ea051cd98cc8ce10278e9556::app.txt": "diff --git a/app.txt b/app.txt\nnew file mode 100644\nindex 0000000..83db48f\n--- /dev/null\n+++ b/app.txt\n@@ -0,0 +1,3 @@\n+line1\n+line2\n+line3\n"
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "name": "crumbtree",
+  "version": "0.1.0",
+  "description": "CrumbTree — a fast, friendly git client with a beautiful vertical commit graph.",
+  "author": "Joseph Cook",
+  "license": "PolyForm-Noncommercial-1.0.0",
+  "main": "./out/main/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "preview": "electron-vite preview",
+    "start": "electron-vite preview",
+    "demo": "vite --config vite.demo.config.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint . --ext .ts,.tsx",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
+    "package": "electron-vite build && electron-builder --dir",
+    "dist": "electron-vite build && electron-builder"
+  },
+  "build": {
+    "appId": "com.crumbtree.app",
+    "productName": "CrumbTree",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "out/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "resources",
+        "to": "resources"
+      }
+    ],
+    "win": {
+      "icon": "resources/icon.ico",
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "CrumbTree-Setup-${version}.${ext}",
+      "license": "LICENSE.md"
+    },
+    "mac": {
+      "icon": "resources/icon.png",
+      "category": "public.app-category.developer-tools"
+    },
+    "linux": {
+      "icon": "resources/icon.png",
+      "category": "Development",
+      "target": [
+        "AppImage"
+      ]
+    }
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.3.0",
+    "electron-store": "^10.0.0",
+    "zustand": "^5.0.2"
+  },
+  "devDependencies": {
+    "@tanstack/react-virtual": "^3.11.0",
+    "@types/node": "^22.10.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "electron-vite": "^2.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.7.2",
+    "vite": "^5.4.11",
+    "vitest": "^2.1.8"
+  },
+  "homepage": "https://github.com/cookiester34/CrumbTree",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cookiester34/CrumbTree.git"
+  }
+}
