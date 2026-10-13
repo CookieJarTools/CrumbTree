@@ -129,6 +129,8 @@ interface State {
   drawerAutoOpened: boolean
   /** The little mascot at the bottom of the screen. Purely cosmetic. */
   gitFriend: boolean
+  /** Compact mode: hide everything that isn't strictly needed. */
+  compactMode: boolean
   /** The log is only lifted a crack (the friend peeking), not opened properly. */
   drawerPeek: boolean
   toasts: Toast[]
@@ -210,6 +212,7 @@ interface State {
 
   setNoobMode: (on: boolean) => Promise<void>
   setGitFriend: (on: boolean) => void
+  setCompactMode: (on: boolean) => void
 
   loadLfs: () => Promise<void>
   trackLfs: (pattern: string) => Promise<void>
@@ -317,6 +320,7 @@ export const useStore = create<State>((set, get) => ({
   gitProgress: null,
   drawerAutoOpened: false,
   gitFriend: true,
+  compactMode: false,
   drawerPeek: false,
   toasts: [],
   paletteOpen: false,
@@ -376,6 +380,7 @@ export const useStore = create<State>((set, get) => ({
       set({
         noobMode: settings.noobMode,
         gitFriend: settings.gitFriend ?? true,
+        compactMode: settings.compactMode ?? false,
         workspaces,
         activeWorkspaceId: active.id,
         openRepos: active.repos,
@@ -719,6 +724,11 @@ export const useStore = create<State>((set, get) => ({
     } catch (e) {
       get().toast('error', errMsg(e))
     }
+  },
+
+  setCompactMode: (on) => {
+    set({ compactMode: on })
+    crumb.settingsSet({ compactMode: on }).catch(() => {})
   },
 
   setGitFriend: (on) => {

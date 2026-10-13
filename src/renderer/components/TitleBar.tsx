@@ -32,6 +32,8 @@ export function TitleBar() {
       setClone: st.setClone,
       gitFriend: st.gitFriend,
       setGitFriend: st.setGitFriend,
+      compactMode: st.compactMode,
+      setCompactMode: st.setCompactMode,
       promptText: st.promptText,
       createWorkspace: st.createWorkspace,
       switchWorkspace: st.switchWorkspace,
@@ -122,6 +124,11 @@ export function TitleBar() {
       label: s.noobMode ? 'Turn off Minimal Mode' : 'Turn on Minimal Mode',
       icon: 'sparkle',
       onSelect: () => s.setNoobMode(!s.noobMode)
+    },
+    {
+      label: s.compactMode ? 'Turn off Compact Mode' : 'Turn on Compact Mode',
+      icon: 'compact',
+      onSelect: () => s.setCompactMode(!s.compactMode)
     },
     {
       label: s.gitFriend ? 'Hide git friend' : 'Show git friend',

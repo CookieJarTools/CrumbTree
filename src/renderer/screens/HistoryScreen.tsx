@@ -6,6 +6,9 @@ import { useStore } from '../store/store'
 
 export function HistoryScreen() {
   const selectedFile = useStore((s) => s.selectedFile)
+  const selectedHash = useStore((s) => s.selectedHash)
+  // Compact mode: no empty "select a commit" panel; the graph gets the full width.
+  const hideDetail = useStore((s) => s.compactMode) && !selectedHash
   const rightW = useSize('historyRightW', 460)
   const detailH = useSize('historyDetailH', 260)
   return (
@@ -13,20 +16,24 @@ export function HistoryScreen() {
       <div className="history-left">
         <CommitGraph />
       </div>
-      <Resizer axis="x" sizeKey="historyRightW" def={460} min={320} max={900} dir={-1} />
-      <div className="history-right" style={{ width: rightW }}>
-        <div className="history-detail" style={{ height: selectedFile ? detailH : undefined }}>
-          <CommitDetail />
-        </div>
-        {selectedFile && (
-          <>
-            <Resizer axis="y" sizeKey="historyDetailH" def={260} min={120} max={600} dir={1} />
-            <div className="history-diff">
-              <DiffView />
+      {!hideDetail && (
+        <>
+          <Resizer axis="x" sizeKey="historyRightW" def={460} min={320} max={900} dir={-1} />
+          <div className="history-right" style={{ width: rightW }}>
+            <div className="history-detail" style={{ height: selectedFile ? detailH : undefined }}>
+              <CommitDetail />
             </div>
-          </>
-        )}
-      </div>
+            {selectedFile && (
+              <>
+                <Resizer axis="y" sizeKey="historyDetailH" def={260} min={120} max={600} dir={1} />
+                <div className="history-diff">
+                  <DiffView />
+                </div>
+              </>
+            )}
+          </div>
+        </>
+      )}
     </div>
   )
 }

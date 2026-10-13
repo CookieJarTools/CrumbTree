@@ -47,10 +47,12 @@ type IconName =
   | 'newRepo'
   | 'tree'
   | 'list'
+  | 'compact'
 
 const PATHS: Record<IconName, string> = {
   tree: 'M6 4v11a2 2 0 0 0 2 2h2M6 4a1.6 1.6 0 1 0 0 .01M14 10h6M14 10a1.6 1.6 0 1 0 0 .01M14 17h6M14 17a1.6 1.6 0 1 0 0 .01',
   list: 'M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01',
+  compact: 'M4 10h16M4 14h16M9 3l3 3 3-3M9 21l3-3 3 3',
   branch: 'M6 3v7a3 3 0 0 0 3 3h3M6 3a2 2 0 1 0 0 .01M6 13a2 2 0 1 0 0 .01M15 8a2 2 0 1 0 0 .01',
   commit: 'M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM2 12h6m8 0h6',
   tag: 'M3 3h7l11 11-7 7L3 10V3zM7 7h.01',

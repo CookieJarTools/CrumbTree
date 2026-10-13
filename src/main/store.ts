@@ -16,6 +16,7 @@ interface Schema {
   window: { width: number; height: number; x?: number; y?: number }
   noobMode: boolean
   gitFriend: boolean
+  compactMode: boolean
   openRepos: { path: string; name: string }[]
   activeRepo: string | null
   workspaces: Workspace[]
@@ -33,6 +34,7 @@ const store = new Store<Schema>({
     window: { width: 1280, height: 820 },
     noobMode: false,
     gitFriend: true,
+    compactMode: false,
     openRepos: [],
     activeRepo: null,
     workspaces: [],
@@ -135,6 +137,14 @@ export function getGitFriend(): boolean {
 
 export function setGitFriend(on: boolean): void {
   store.set('gitFriend', on)
+}
+
+export function getCompactMode(): boolean {
+  return store.get('compactMode')
+}
+
+export function setCompactMode(on: boolean): void {
+  store.set('compactMode', on)
 }
 
 export function getRecentRepos(): RecentRepo[] {

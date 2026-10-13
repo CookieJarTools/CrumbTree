@@ -77,6 +77,7 @@ import {
   getActiveRepo,
   getActiveWorkspaceId,
   getFavourites,
+  getCompactMode,
   getGitFriend,
   getLayout,
   getNoobMode,
@@ -86,6 +87,7 @@ import {
   setActiveRepo,
   setActiveWorkspaceId,
   setFavourites,
+  setCompactMode,
   setGitFriend,
   setLayout,
   setNoobMode,
@@ -454,6 +456,7 @@ export function registerIpc(getWindow: () => BrowserWindow | null): void {
     wrap(async () => ({
       noobMode: getNoobMode(),
       gitFriend: getGitFriend(),
+      compactMode: getCompactMode(),
       openRepos: getOpenRepos(),
       activeRepo: getActiveRepo(),
       workspaces: getWorkspaces(),
@@ -469,6 +472,7 @@ export function registerIpc(getWindow: () => BrowserWindow | null): void {
       req: {
         noobMode?: boolean
         gitFriend?: boolean
+        compactMode?: boolean
         openRepos?: { path: string; name: string }[]
         activeRepo?: string | null
         workspaces?: import('@shared/types').Workspace[]
@@ -480,6 +484,7 @@ export function registerIpc(getWindow: () => BrowserWindow | null): void {
       wrap(async () => {
         if (typeof req.noobMode === 'boolean') setNoobMode(req.noobMode)
         if (typeof req.gitFriend === 'boolean') setGitFriend(req.gitFriend)
+        if (typeof req.compactMode === 'boolean') setCompactMode(req.compactMode)
         if (req.openRepos) setOpenRepos(req.openRepos)
         if (req.activeRepo !== undefined) setActiveRepo(req.activeRepo)
         if (req.workspaces) setWorkspaces(req.workspaces)

@@ -30,14 +30,16 @@ import { Welcome } from './screens/Welcome'
 import './theme/app.css'
 
 export default function App() {
-  const { init, repo, view, togglePalette, gitOk, noobMode } = useStore(
+  const { init, repo, view, togglePalette, gitOk, noobMode, compactMode, setCompactMode } = useStore(
     useShallow((s) => ({
       init: s.init,
       repo: s.repo,
       view: s.view,
       togglePalette: s.togglePalette,
       gitOk: s.gitOk,
-      noobMode: s.noobMode
+      noobMode: s.noobMode,
+      compactMode: s.compactMode,
+      setCompactMode: s.setCompactMode
     }))
   )
 
@@ -50,11 +52,14 @@ export default function App() {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault()
         togglePalette()
+      } else if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'm') {
+        e.preventDefault()
+        setCompactMode(!compactMode)
       }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [togglePalette])
+  }, [togglePalette, compactMode, setCompactMode])
 
   const showWelcome = !repo || gitOk === false
 
@@ -101,7 +106,7 @@ export default function App() {
     )
 
   return (
-    <div className="app-root">
+    <div className={`app-root ${compactMode ? 'compact' : ''}`}>
       <TitleBar />
       <div className="app-shell">{body}</div>
       <CommandPalette />
@@ -111,7 +116,7 @@ export default function App() {
       <CloneDialog />
       <MergeDialog />
       <FileHistoryModal />
-      <GitFriend />
+      {!compactMode && <GitFriend />}
       <Toasts />
     </div>
   )

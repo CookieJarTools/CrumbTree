@@ -53,6 +53,7 @@ const lfsFiles = [
 ]
 let noobMode = false
 let gitFriend = true
+let compactMode = false
 let favourites: Favourites = { repos: [], branches: {}, commits: {} }
 let layout: Record<string, number> = {}
 
@@ -389,6 +390,7 @@ export const mockApi: CrumbApi = {
     ok({
       noobMode,
       gitFriend,
+      compactMode,
       openRepos: [{ path: data.repo.path, name: data.repo.name }],
       activeRepo: data.repo.path,
       workspaces: [
@@ -407,11 +409,13 @@ export const mockApi: CrumbApi = {
   settingsSet: (patch: {
     noobMode?: boolean
     gitFriend?: boolean
+    compactMode?: boolean
     favourites?: Favourites
     layout?: Record<string, number>
   }) => {
     if (typeof patch.noobMode === 'boolean') noobMode = patch.noobMode
     if (typeof patch.gitFriend === 'boolean') gitFriend = patch.gitFriend
+    if (typeof patch.compactMode === 'boolean') compactMode = patch.compactMode
     if (patch.favourites) favourites = patch.favourites
     if (patch.layout) layout = patch.layout
     return ok(undefined)

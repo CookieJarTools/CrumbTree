@@ -4905,3 +4905,89 @@ body.resizing-y * {
 .rb-status.bad {
   color: var(--del);
 }
+
+/* ---- Compact Mode ----
+   Hides everything that isn't strictly needed (Ctrl+Shift+M, or ≡ › View).
+   Kept in one block so the full layout above is untouched. */
+.compact {
+  --topbar-h: 38px;
+}
+
+/* Sidebar: no brand header or footer toggle (the title bar has the logo, the ≡ menu
+   has Minimal Mode), no counts, and the nav collapses to one row of icons. */
+.compact .sidebar-brand,
+.compact .sidebar-foot,
+.compact .side-workspace-label,
+.compact .side-count {
+  display: none;
+}
+.compact .sidebar-scroll {
+  padding-top: var(--sp-2);
+}
+.compact .side-nav {
+  display: flex;
+  gap: 2px;
+  padding-bottom: var(--sp-2);
+  margin-bottom: var(--sp-1);
+  border-bottom: 1px solid var(--border);
+}
+.compact .side-nav .nav-item {
+  position: relative;
+  width: auto;
+  flex: 1;
+  justify-content: center;
+  padding: 7px 0;
+}
+.compact .side-nav .nav-label {
+  display: none;
+}
+/* The change count shrinks to a dot on the Changes icon. */
+.compact .side-nav .nav-badge {
+  position: absolute;
+  top: 5px;
+  right: calc(50% - 11px);
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 0;
+  background: var(--accent);
+}
+.compact .side-label {
+  padding-top: var(--sp-3);
+}
+.compact .ref-row {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+/* Top bar: the tab already names the repo, Ctrl+K needs no reminder, and the sync
+   buttons are icons with tooltips. */
+.compact .repo-picker,
+.compact .cmdk-chip,
+.compact .tb-btn-label {
+  display: none;
+}
+.compact .topbar {
+  padding-left: var(--sp-3);
+}
+.compact .tb-btn {
+  padding: 6px 8px;
+}
+
+/* History: no column headings or hash column (the details panel shows the hash), and
+   the search bar only appears after Ctrl+F, or while it holds a query. */
+.compact .graph-header,
+.compact .col-hash {
+  display: none;
+}
+.compact .commit-row {
+  grid-template-columns: var(--gutter, 60px) minmax(0, 1fr) 130px 84px;
+  font-size: 12.5px;
+}
+.compact .graph-toolbar:not(.open) {
+  display: none;
+}
+.compact .ref-badge {
+  line-height: 14px;
+}

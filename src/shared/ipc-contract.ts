@@ -143,6 +143,8 @@ export interface OpenRepoRef {
 export interface Settings {
   noobMode: boolean
   gitFriend: boolean
+  /** Hide everything that isn't strictly needed. */
+  compactMode: boolean
   openRepos: OpenRepoRef[]
   activeRepo: string | null
   workspaces: Workspace[]
@@ -249,6 +251,7 @@ export interface Requests {
   [CHANNELS.settingsSet]: {
     noobMode?: boolean
     gitFriend?: boolean
+    compactMode?: boolean
     openRepos?: OpenRepoRef[]
     activeRepo?: string | null
     workspaces?: Workspace[]

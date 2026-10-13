@@ -62,13 +62,16 @@ export function TopBar() {
       {repo && (
         <div className="sync-group">
           <button className="tb-btn" onClick={fetch} title="Fetch all (git fetch --all --prune)">
-            <Icon name="fetch" size={15} /> Fetch
+            <Icon name="fetch" size={15} />
+            <span className="tb-btn-label">Fetch</span>
           </button>
           <button className="tb-btn" onClick={pull} disabled={!head?.upstream} title="Pull (fast-forward only)">
-            <Icon name="pull" size={15} /> Pull
+            <Icon name="pull" size={15} />
+            <span className="tb-btn-label">Pull</span>
           </button>
           <button className="tb-btn accent" onClick={push} disabled={!head?.upstream} title="Push">
-            <Icon name="push" size={15} /> Push
+            <Icon name="push" size={15} />
+            <span className="tb-btn-label">Push</span>
           </button>
           <button className="tb-icon" onClick={refresh} title="Refresh">
             <Icon name="refresh" size={15} />

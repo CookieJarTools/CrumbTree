@@ -45,7 +45,14 @@ export function CommandPalette() {
           if (msg !== null) store.createStash(msg, true)
         }
       },
-      { id: 'oplog', label: 'Toggle operation log', icon: 'terminal', run: () => store.toggleDrawer() }
+      { id: 'oplog', label: 'Toggle operation log', icon: 'terminal', run: () => store.toggleDrawer() },
+      {
+        id: 'compact',
+        label: store.compactMode ? 'Turn off Compact Mode' : 'Turn on Compact Mode',
+        hint: 'Ctrl+Shift+M',
+        icon: 'compact',
+        run: () => store.setCompactMode(!store.compactMode)
+      }
     ]
     if (store.selectedFile) {
       base.push({

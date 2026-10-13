@@ -156,6 +156,7 @@ const api = {
   settingsSet: (patch: {
     noobMode?: boolean
     gitFriend?: boolean
+    compactMode?: boolean
     openRepos?: { path: string; name: string }[]
     activeRepo?: string | null
     workspaces?: import('@shared/types').Workspace[]

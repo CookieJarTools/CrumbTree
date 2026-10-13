@@ -7,9 +7,17 @@ import { isBaseBranch } from '../lib/refs'
 import { useSize } from './Resizer'
 import { Icon } from './ui/Icon'
 
-function SectionLabel({ children, count }: { children: string; count?: number }) {
+function SectionLabel({
+  children,
+  count,
+  className = ''
+}: {
+  children: string
+  count?: number
+  className?: string
+}) {
   return (
-    <div className="side-label">
+    <div className={`side-label ${className}`}>
       <span>{children}</span>
       {count !== undefined && <span className="side-count">{count}</span>}
     </div>
@@ -30,7 +38,7 @@ function NavItem({
   onClick: () => void
 }) {
   return (
-    <button className={`nav-item ${active ? 'active' : ''}`} onClick={onClick}>
+    <button className={`nav-item ${active ? 'active' : ''}`} onClick={onClick} title={label}>
       <Icon name={icon} size={16} />
       <span className="nav-label">{label}</span>
       {badge !== undefined && badge !== 0 && badge !== '' && <span className="nav-badge">{badge}</span>}
@@ -268,24 +276,26 @@ export function Sidebar() {
       </div>
 
       <div className="sidebar-scroll">
-        <SectionLabel>Workspace</SectionLabel>
-        <NavItem icon="history" label="History" active={view === 'history'} onClick={() => setView('history')} />
-        <NavItem
-          icon="changes"
-          label="Changes"
-          active={view === 'changes'}
-          badge={changeCount}
-          onClick={() => setView('changes')}
-        />
-        <NavItem icon="stash" label="Stashes" active={view === 'stashes'} onClick={() => setView('stashes')} />
-        <NavItem icon="merge" label="Rebase" active={view === 'rebase'} onClick={() => setView('rebase')} />
-        <NavItem
-          icon="worktree"
-          label="Worktrees"
-          active={view === 'worktrees'}
-          onClick={() => setView('worktrees')}
-        />
-        <NavItem icon="database" label="LFS" active={view === 'lfs'} onClick={() => setView('lfs')} />
+        <SectionLabel className="side-workspace-label">Workspace</SectionLabel>
+        <nav className="side-nav">
+          <NavItem icon="history" label="History" active={view === 'history'} onClick={() => setView('history')} />
+          <NavItem
+            icon="changes"
+            label="Changes"
+            active={view === 'changes'}
+            badge={changeCount}
+            onClick={() => setView('changes')}
+          />
+          <NavItem icon="stash" label="Stashes" active={view === 'stashes'} onClick={() => setView('stashes')} />
+          <NavItem icon="merge" label="Rebase" active={view === 'rebase'} onClick={() => setView('rebase')} />
+          <NavItem
+            icon="worktree"
+            label="Worktrees"
+            active={view === 'worktrees'}
+            onClick={() => setView('worktrees')}
+          />
+          <NavItem icon="database" label="LFS" active={view === 'lfs'} onClick={() => setView('lfs')} />
+        </nav>
 
         {repo && (
           <>

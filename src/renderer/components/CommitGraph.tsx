@@ -13,6 +13,8 @@ const LW = 15 // lane width in px
 const NODE_R = 4.5
 const PAD = 12
 const ROW_H = 30
+/** Compact mode packs rows tighter. */
+const ROW_H_COMPACT = 26
 
 function edgePath(x1: number, y1: number, x2: number, y2: number): string {
   if (x1 === x2) return `M${x1} ${y1} L${x2} ${y2}`
@@ -26,26 +28,28 @@ const OFF_OPACITY = 0.28
 function GraphCell({
   row,
   width,
+  height,
   onBranch,
   isHead
 }: {
   row: GraphRow
   width: number
+  height: number
   /** Commits in the current branch's history; null when unknown (nothing is dimmed). */
   onBranch: Set<string> | null
   isHead: boolean
 }) {
   const cx = (lane: number) => lane * LW + LW / 2 + PAD
-  const mid = ROW_H / 2
+  const mid = height / 2
   const lit = (hashes: string[]) => !onBranch || hashes.some((h) => onBranch.has(h))
   const nodeLit = lit([row.commit.hash])
   return (
-    <svg className="graph-cell" width={width} height={ROW_H} style={{ minWidth: width }}>
+    <svg className="graph-cell" width={width} height={height} style={{ minWidth: width }}>
       {row.edges.map((e, i) => {
         const x1 = cx(e.fromLane)
         const y1 = e.fromTop ? 0 : mid
         const x2 = cx(e.toLane)
-        const y2 = e.toBottom ? ROW_H : mid
+        const y2 = e.toBottom ? height : mid
         return (
           <path
             key={i}
@@ -248,7 +252,8 @@ export function CommitGraph() {
       favourites: s.favourites,
       refsList: s.refs,
       currentBranch: s.repo?.head.branch,
-      headHash: s.repo?.head.hash
+      headHash: s.repo?.head.hash,
+      compactMode: s.compactMode
     }))
   )
   const { rows, selectedHash, selectCommit, openMenu, promptText, copy, checkout, createBranchAt, createTagAt, revert } =
@@ -261,7 +266,28 @@ export function CommitGraph() {
     [st.refsList]
   )
   const parentRef = useRef<HTMLDivElement>(null)
+  const searchRef = useRef<HTMLInputElement>(null)
   const [query, setQuery] = useState('')
+  // Compact mode hides the search bar until asked for; this is "asked for".
+  const [searchOpen, setSearchOpen] = useState(false)
+  const rowH = st.compactMode ? ROW_H_COMPACT : ROW_H
+
+  // Ctrl+F jumps to the commit search (in compact mode this is what reveals it).
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && !e.shiftKey && e.key.toLowerCase() === 'f') {
+        e.preventDefault()
+        setSearchOpen(true)
+        // Focus after the bar has rendered (a hidden input can't take focus).
+        requestAnimationFrame(() => {
+          searchRef.current?.focus()
+          searchRef.current?.select()
+        })
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
 
   const visible = useMemo(
     () => (query.trim() ? rows.filter((r) => matchCommit(r.commit, query)) : rows),
@@ -356,9 +382,15 @@ export function CommitGraph() {
   const virt = useVirtualizer({
     count: visible.length,
     getScrollElement: () => parentRef.current,
-    estimateSize: () => ROW_H,
+    estimateSize: () => rowH,
     overscan: 20
   })
+
+  // Row height changes with compact mode; drop the cached sizes.
+  const measure = virt.measure
+  useEffect(() => {
+    measure()
+  }, [rowH, measure])
 
   // Scroll to a commit requested from elsewhere (e.g. clicking a branch/tag).
   const scrollToIndex = virt.scrollToIndex
@@ -371,13 +403,21 @@ export function CommitGraph() {
   }, [st.pendingScroll, visible, searching])
 
   const header = (
-    <div className="graph-toolbar">
+    <div className={`graph-toolbar ${searchOpen || query ? 'open' : ''}`}>
       <div className="graph-search">
         <Icon name="search" size={14} />
         <input
+          ref={searchRef}
           value={query}
           placeholder="Search commits by message, hash or author…"
           onChange={(e) => setQuery(e.target.value)}
+          onBlur={() => setSearchOpen(false)}
+          onKeyDown={(e) => {
+            if (e.key === 'Escape') {
+              setQuery('')
+              e.currentTarget.blur()
+            }
+          }}
         />
         {query && (
           <button className="graph-search-clear" onClick={() => setQuery('')} title="Clear">
@@ -430,7 +470,7 @@ export function CommitGraph() {
                 <div
                   key={row.commit.hash}
                   className={`commit-row ${selected ? 'selected' : ''} ${off ? 'off-branch' : ''} ${isHead ? 'is-head' : ''}`}
-                  style={{ transform: `translateY(${vi.start}px)`, height: ROW_H }}
+                  style={{ transform: `translateY(${vi.start}px)`, height: rowH }}
                   onClick={() => selectCommit(row.commit.hash)}
                   onContextMenu={(e) => {
                     e.preventDefault()
@@ -445,7 +485,13 @@ export function CommitGraph() {
                   {searching ? (
                     <span className="graph-cell" />
                   ) : (
-                    <GraphCell row={row} width={gutter} onBranch={onBranch} isHead={isHead} />
+                    <GraphCell
+                      row={row}
+                      width={gutter}
+                      height={rowH}
+                      onBranch={onBranch}
+                      isHead={isHead}
+                    />
                   )}
                   <span className="col-desc">
                     {faved && <Icon name="starOn" size={11} className="commit-star" />}
