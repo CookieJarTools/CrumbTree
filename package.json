@@ -80,9 +80,9 @@
     "vite": "^5.4.11",
     "vitest": "^2.1.8"
   },
-  "homepage": "https://github.com/cookiester34/CrumbTree",
+  "homepage": "https://github.com/CookieJarTools/CrumbTree",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cookiester34/CrumbTree.git"
+    "url": "https://github.com/CookieJarTools/CrumbTree.git"
   }
 }

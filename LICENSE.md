@@ -1,6 +1,6 @@
 # PolyForm Noncommercial License 1.0.0
 
-Required Notice: Copyright (c) 2026 Joseph Cook (https://github.com/cookiester34/CrumbTree)
+Required Notice: Copyright (c) 2026 Joseph Cook (https://github.com/CookieJarTools/CrumbTree)
 
 <https://polyformproject.org/licenses/noncommercial/1.0.0>
 

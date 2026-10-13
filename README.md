@@ -9,13 +9,13 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/cookiester34/CrumbTree/releases/latest"><img src="https://img.shields.io/github/v/release/cookiester34/CrumbTree?include_prereleases&label=download&color=5e6ad2&style=flat-square" alt="Latest release"></a>
+  <a href="https://github.com/CookieJarTools/CrumbTree/releases/latest"><img src="https://img.shields.io/github/v/release/CookieJarTools/CrumbTree?include_prereleases&label=download&color=5e6ad2&style=flat-square" alt="Latest release"></a>
   <img src="https://img.shields.io/badge/platform-Windows-3a3d45?style=flat-square" alt="Windows">
   <a href="LICENSE.md"><img src="https://img.shields.io/badge/licence-PolyForm%20Noncommercial-3a3d45?style=flat-square" alt="Licence"></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/cookiester34/CrumbTree/releases/latest"><b>Download for Windows</b></a>
+  <a href="https://github.com/CookieJarTools/CrumbTree/releases/latest"><b>Download for Windows</b></a>
   &nbsp;·&nbsp;
   <a href="#features">Features</a>
   &nbsp;·&nbsp;
@@ -83,7 +83,7 @@ with a button to undo each change.
 ## Install
 
 1. Download `CrumbTree-Setup-x.y.z.exe` from the
-   [latest release](https://github.com/cookiester34/CrumbTree/releases/latest).
+   [latest release](https://github.com/CookieJarTools/CrumbTree/releases/latest).
 2. Run it. The installer isn't code-signed yet, so Windows may show a SmartScreen
    warning. Click **More info**, then **Run anyway**.
 3. Make sure [git](https://git-scm.com/downloads) is installed.
