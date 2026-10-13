@@ -11,7 +11,7 @@
 <p align="center">
   <a href="https://github.com/CookieJarTools/CrumbTree/releases/latest"><img src="https://img.shields.io/github/v/release/CookieJarTools/CrumbTree?include_prereleases&label=download&color=5e6ad2&style=flat-square" alt="Latest release"></a>
   <img src="https://img.shields.io/badge/platform-Windows-3a3d45?style=flat-square" alt="Windows">
-  <a href="LICENSE.md"><img src="https://img.shields.io/badge/licence-PolyForm%20Noncommercial-3a3d45?style=flat-square" alt="Licence"></a>
+  <a href="LICENSE.md"><img src="https://img.shields.io/badge/licence-PolyForm%20Shield-3a3d45?style=flat-square" alt="Licence"></a>
 </p>
 
 <p align="center">
@@ -110,7 +110,6 @@ rather than a bundled copy, so it behaves the same as git on the command line.
 
 ## Licence
 
-Free for non-commercial use under the
-[PolyForm Noncommercial License 1.0.0](LICENSE.md). You can use, change and share it
-for personal projects, study, hobbies, charities and schools. Selling it or using it
-for commercial work requires permission.
+CrumbTree is licensed under the [PolyForm Shield License 1.0.0](LICENSE.md). You can use
+it for anything, including commercial work. The one thing you can't do is use it to
+make a product that competes with CrumbTree.

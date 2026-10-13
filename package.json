@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "CrumbTree — a fast, friendly git client with a beautiful vertical commit graph.",
   "author": "Joseph Cook",
-  "license": "PolyForm-Noncommercial-1.0.0",
+  "license": "PolyForm-Shield-1.0.0",
   "main": "./out/main/index.js",
   "type": "module",
   "scripts": {
