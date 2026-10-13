@@ -393,7 +393,8 @@ export function StagingPanel() {
         </div>
       </div>
 
-      {selCount > 0 && (
+      {/* A single click is just "view this file"; the bar is for multi-select. */}
+      {selCount > 1 && (
         <div className="stage-selbar">
           <span>
             {selCount} selected

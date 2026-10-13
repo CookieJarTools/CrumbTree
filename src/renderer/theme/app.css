@@ -1294,6 +1294,10 @@
   color: var(--text);
   user-select: text;
 }
+/* The palette is the focus; a ring around its only field is just noise. */
+.palette-input input:focus-visible {
+  outline: none;
+}
 .palette-list {
   max-height: 46vh;
   overflow-y: auto;
